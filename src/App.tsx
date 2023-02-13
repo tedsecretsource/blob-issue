@@ -14,7 +14,6 @@ function App() {
     }
     request.onsuccess = (event) => {
       setDb((event.target as IDBOpenDBRequest).result)
-      console.log('Database initialized', db)
     }
     request.onerror = (event) => {
       console.log('Error opening database ' + (event.target as IDBOpenDBRequest).error)
@@ -24,7 +23,7 @@ function App() {
 
   return (
     <div className="App">
-      <SoundRecorder db={db} />
+      {db && <SoundRecorder db={db} />}
     </div>
   );
 }
